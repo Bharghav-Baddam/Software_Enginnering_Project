@@ -17,6 +17,8 @@ public class Friend {
 	private String name;
 	private String location;
 	private Date availability;
+	
+	//This should map to another entity/table of Activity
 	private String activity;
 	
 	public Friend() {

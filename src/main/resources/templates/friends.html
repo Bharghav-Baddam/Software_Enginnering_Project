@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: head">
+<link th:replace="fragments :: bootstrap"></link>
+</head>
+<body>
+
+
+<nav th:replace="fragments :: nav"></nav>
+
+
+<table class="table" style="width:100%">
+<thead>
+  <tr>
+    <th scope="col">Name</th>
+    <th scope="col">Location</th> 
+    <th scope="col">Availability</th>
+  </tr>
+  </thead>
+  <tbody>
+<tr th:each="Friend : ${Friends}">
+    <td th:text="${Friend.name}">Name</td>	
+    <td th:text="${Friend.location}">Location></td>
+    <td th:text="${Friend.availability}">Availability</td> 
+</tr> 
+</tbody>
+</table>
+
+<src th:replace="fragments :: stylesrc"></src>
+</body>
+</html>

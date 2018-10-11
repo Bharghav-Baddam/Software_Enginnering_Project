@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: head">
+<link th:replace="fragments :: bootstrap"></link>
+</head>
+<body>
+
+
+<nav th:replace="fragments :: nav"></nav>
+
+<form id="searchform" method="post" action="/search/findfriends">
+<div class="form-group">
+<input class="form-control" name="location" type="text" placeholder="location"></input>
+</div>
+<div class="form-group">
+<input class="form-control" name="activity" type="text" placeholder="activity"></input>
+</div>
+<div class="form-group">
+<input class="form-control" name="date" type="date" ></input>
+</div>
+<input class="btn btn-primary" type="submit" value="find buddy!"></input>
+
+
+</form>
+
+<src th:replace="fragments :: stylesrc"></src>
+</body>
+</html>

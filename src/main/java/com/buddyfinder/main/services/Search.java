@@ -46,6 +46,13 @@ public class Search {
 		friendRepository.save(new Friend("5","Ansel", "New York", new Date((long) 123.23),"Getting Dinner"));
 		friendRepository.save(new Friend("6","Bharvee", "New York", new Date((long) 123.23),"Hiking"));
 		friendRepository.save(new Friend("7","Chengwang", "New York", new Date((long) 123.23),"Hiking"));
+		friendRepository.save(new Friend("8", "Ronald", "New York", new Date((long) 123.23),"Running"));
+		friendRepository.save(new Friend("9","Steven", "New York", new Date((long) 123.23),"Running"));
+		friendRepository.save(new Friend("10","Jack", "New York", new Date((long) 123.23),"Watching Movie"));
+		friendRepository.save(new Friend("11","Mia", "New York", new Date((long) 123.23),"Watching Movie"));
+		friendRepository.save(new Friend("12","Greg", "New York", new Date((long) 123.23),"Getting Dinner"));
+		friendRepository.save(new Friend("13","Tom", "New York", new Date((long) 123.23),"Getting Dinner"));
+		friendRepository.save(new Friend("14","David", "New York", new Date((long) 123.23),"Hiking"));
 		
 		Iterable<Friend> friends = friendRepository.findAll();
 		ArrayList<Friend> listOfFriends = new ArrayList<>();

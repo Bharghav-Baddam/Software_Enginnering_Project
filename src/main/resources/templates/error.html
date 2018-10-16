@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments :: head">
-<link th:replace="fragments :: bootstrap"></link>
 </head>
 <body>
 
 
-<nav th:replace="fragments :: nav"></nav>
+<header th:replace="fragments :: header"></header>
 
 
-<h1>Sorry, we can't seem to find what you're looking for!</h1>
+
+<h1 id="error">Sorry, we can't seem to find what you're looking for!</h1>
 
 <src th:replace="fragments :: stylesrc"></src>
 </body>

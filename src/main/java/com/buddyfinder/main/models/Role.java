@@ -7,34 +7,49 @@ import java.util.Set;
 @Table(name = "role")
 
 	public class Role {
-	    private Long id;
-	    private String name;
-	    private Set<User> users;
+	 	@Id
+	    @GeneratedValue(strategy = GenerationType.IDENTITY)
+	 	@Column( unique=true, nullable=false)
+	    private Integer id;
+	 	private String name;
+		@OneToOne(mappedBy = "role")
+	 	private Account account;
+	    private Integer privacyLevel;
+	 	public Role() {
+	 		
+	 	}
+	 	public Role(String name,Integer privacylevel) {
+	 		this.name=name;
+	 		this.privacyLevel=privacylevel;
+	 	}
+	    public Integer getId() {
+			return id;
+		}
+		public void setId(Integer id) {
+			this.id = id;
+		}
+		public String getName() {
+			return name;
+		}
+		public void setName(String name) {
+			this.name = name;
+		}
+		public Integer getPrivacyLevel() {
+			return privacyLevel;
+		}
+		public void setPrivacyLevel(Integer privacyLevel) {
+			this.privacyLevel = privacyLevel;
+		}
+	
+		public Account getAccount() {
+			return account;
+		}
+		public void setAccount(Account account) {
+			this.account = account;
+		}
+		
+		
 
-	    @Id
-	    @GeneratedValue(strategy = GenerationType.AUTO)
-	    public Long getId() {
-	        return id;
-	    }
-
-	    public void setId(Long id) {
-	        this.id = id;
-	    }
-
-	    public String getName() {
-	        return name;
-	    }
-
-	    public void setName(String name) {
-	        this.name = name;
-	    }
-
-	    @ManyToMany(mappedBy = "roles")
-	    public Set<User> getUsers() {
-	        return users;
-	    }
-
-	    public void setUsers(Set<User> users) {
-	        this.users = users;
-	    }
+	   
+	  
 }

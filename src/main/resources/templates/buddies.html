@@ -40,29 +40,26 @@
 					</p>
 				</div>
 			</div>
-			<div class="row">
+  			<div class="row">
+  			   <th:block th:each="Friend : ${Friends}">
 				<div class="col-lg-4">
 					<div class="single-property">
+					
 						<div class="images">
 							<img class="img-fluid mx-auto d-block" src="/img/s1.jpg" alt="">
-							<span>Looking for a buddy</span>
 						</div>
 
 						<div class="desc">
 							<div class="top d-flex justify-content-between">
-								<h4><a href="#">04 Bed Duplex</a></h4>
-								<h4>$3.5M</h4>
+								<h4>Name:</h4>
+							  <h4 th:text="${Friend.name}"></h4>
+							
 							</div>
 							<div class="middle">
 								<div class="d-flex justify-content-start">
-									<p>Bed: 04</p>
-									<p>Bath: 03</p>
-									<p>Area: 750sqm</p>
-								</div>
-								<div class="d-flex justify-content-start">
-									<p>Pool: <span class="gr">Yes</span></p>
-									<p>Internet: <span class="rd">No</span></p>
-									<p>Cleaning: <span class="rd">No</span></p>
+									<p>Location: <span th:text="${Friend.location}"></span></p>
+									<p>Availability: <span th:text="${Friend.availability}"></span></p>
+									<p>Activity: <span th:text="${Friend.activity}" ></span></p>
 								</div>
 							</div>
 							<div class="bottom d-flex justify-content-start">
@@ -71,136 +68,15 @@
 							</div>
 						</div>
 					</div>
-				</div>
-				<div class="col-lg-4">
-					<div class="single-property">
-						<div class="images">
-							<img class="img-fluid mx-auto d-block" src="/img/s2.jpg" alt="">
-							<span>Looking for a buddy</span>
-						</div>
-
-						<div class="desc">
-							<div class="top d-flex justify-content-between">
-								<h4><a href="#">04 Bed Duplex</a></h4>
-								<h4>$3.5M</h4>
-							</div>
-							<div class="middle">
-								<div class="d-flex justify-content-start">
-									<p>Bed: 04</p>
-									<p>Bath: 03</p>
-									<p>Area: 750sqm</p>
-								</div>
-								<div class="d-flex justify-content-start">
-									<p>Pool: <span class="gr">Yes</span></p>
-									<p>Internet: <span class="rd">No</span></p>
-									<p>Cleaning: <span class="rd">No</span></p>
-								</div>
-							</div>
-							<div class="bottom d-flex justify-content-start">
-								<p><span class="lnr lnr-heart"></span> 15 Likes</p>
-								<p><span class="lnr lnr-bubble"></span> 02 Comments</p>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-4">
-					<div class="single-property">
-						<div class="images">
-							<img class="img-fluid mx-auto d-block" src="/img/s3.jpg" alt="">
-							<span>Looking for a buddy</span>
-						</div>
-
-						<div class="desc">
-							<div class="top d-flex justify-content-between">
-								<h4><a href="#">04 Bed Duplex</a></h4>
-								<h4>$3.5M</h4>
-							</div>
-							<div class="middle">
-								<div class="d-flex justify-content-start">
-									<p>Bed: 04</p>
-									<p>Bath: 03</p>
-									<p>Area: 750sqm</p>
-								</div>
-								<div class="d-flex justify-content-start">
-									<p>Pool: <span class="gr">Yes</span></p>
-									<p>Internet: <span class="rd">No</span></p>
-									<p>Cleaning: <span class="rd">No</span></p>
-								</div>
-							</div>
-							<div class="bottom d-flex justify-content-start">
-								<p><span class="lnr lnr-heart"></span> 15 Likes</p>
-								<p><span class="lnr lnr-bubble"></span> 02 Comments</p>
-							</div>
-						</div>
-					</div>
-				</div>
 			</div>
+			</th:block>
+			
+			
 		</div>
 	</section>
 	<!-- End property Area -->
 
-	<!-- Start city Area -->
-	<section class="city-area section-gap-bottom">
-		<div class="container">
-			<div class="row d-flex justify-content-center">
-				<div class="col-md-10 header-text">
-					<h1>Look in cities nearby</h1>
-					<p>
-						There's always someone around!
-					</p>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-lg-4 col-md-4 mb-10">
-					<div class="content">
-						<a href="#" target="_blank">
-							<div class="content-overlay"></div>
-							<img class="content-image img-fluid d-block mx-auto" src="/img/p1.jpg" alt="">
-							<div class="content-details fadeIn-bottom">
-								<h3 class="content-title">San Fransisco</h3>
-							</div>
-						</a>
-					</div>
-				</div>
-				<div class="col-lg-8 col-md-8 mb-10">
-					<div class="content">
-						<a href="#" target="_blank">
-							<div class="content-overlay"></div>
-							<img class="content-image img-fluid d-block mx-auto" src="/img/p2.jpg" alt="">
-							<div class="content-details fadeIn-bottom">
-								<h3 class="content-title">New York</h3>
-							</div>
-						</a>
-					</div>
-					<div class="row city-bottom">
-						<div class="col-lg-6 col-md-6 mt-30">
-							<div class="content">
-								<a href="#" target="_blank">
-									<div class="content-overlay"></div>
-									<img class="content-image img-fluid d-block mx-auto" src="/img/p3.jpg" alt="">
-									<div class="content-details fadeIn-bottom">
-										<h3 class="content-title">Boston</h3>
-									</div>
-								</a>
-							</div>
-						</div>
-						<div class="col-lg-6 col-md-6 mt-30">
-							<div class="content">
-								<a href="#" target="_blank">
-									<div class="content-overlay"></div>
-									<img class="content-image img-fluid d-block mx-auto" src="/img/p4.jpg" alt="">
-									<div class="content-details fadeIn-bottom">
-										<h3 class="content-title">Elay</h3>
-									</div>
-								</a>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-	<!-- End city Area -->
+
 
 	<!-- start footer Area -->
 	<footer class="footer-area section-gap">

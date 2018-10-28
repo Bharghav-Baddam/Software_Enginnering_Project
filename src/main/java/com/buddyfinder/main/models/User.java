@@ -10,7 +10,6 @@ public class User {
 	private Integer id;
     @OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "user_id")
-    @Column(nullable=false)
     private Account account;
     private String username;
     private String gender;

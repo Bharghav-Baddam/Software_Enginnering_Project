@@ -22,11 +22,9 @@ public class User_Act_Mapping {
 	private Integer map_id;
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "user_id")
-	@Column(nullable=false)
     private Account account;
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "act_id")
-	@Column(nullable=false)
 	private Activity activity;
 	private String location;
 	private Date date;

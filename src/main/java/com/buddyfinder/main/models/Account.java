@@ -26,7 +26,6 @@ public class Account {
 	private String security_answer;
 	 @OneToOne(cascade = CascadeType.ALL)
 	 @JoinColumn(name = "role_id")
-	 @Column(nullable=false)
 	private Role role;
 	 @OneToOne(mappedBy = "account")
 	 private User user;

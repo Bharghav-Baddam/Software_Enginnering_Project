@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.buddyfinder.main.models.Friend;
 import com.buddyfinder.main.services.Search;
 
 @Controller
@@ -25,16 +24,16 @@ public class FindFriendController {
 		return "search";
 	}
 	
-	@RequestMapping(method=RequestMethod.POST, value="/findfriends")
-	public String findFriend(@RequestParam String location, @RequestParam String activity,
-			@RequestParam String date, Model model) {
-		System.out.println(location);
-		//search.getFriends will have params passed by @RequestParam annotation
-		//model.addAttribute("Friends", search.getFriends(location, activity, date));
-		model.addAttribute("Friends", search.getFriends(location, activity, date));
-		return "buddies";
-	}
-	
+//	@RequestMapping(method=RequestMethod.POST, value="/findfriends")
+//	public String findFriend(@RequestParam String location, @RequestParam String activity,
+//			@RequestParam String date, Model model) {
+//		System.out.println(location);
+//		//search.getFriends will have params passed by @RequestParam annotation
+//		//model.addAttribute("Friends", search.getFriends(location, activity, date));
+//		model.addAttribute("Friends", search.getFriends(location, activity, date));
+//		return "buddies";
+//	}
+//	
 //	@RequestMapping(method=RequestMethod.GET, value="/findfriends")
 //	public String findFriend(@RequestParam String location,@RequestParam String activity,
 //			@RequestParam String date, Model model) {

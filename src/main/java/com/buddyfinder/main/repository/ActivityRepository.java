@@ -4,6 +4,6 @@ import org.springframework.data.repository.CrudRepository;
 
 import com.buddyfinder.main.models.Activity;
 
-public interface ActivityRepository extends CrudRepository<Activity, String>{
+public interface ActivityRepository extends CrudRepository<Activity, Integer>{
 
 }

@@ -1,6 +1,7 @@
 package com.buddyfinder.main.controllers;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -9,7 +10,9 @@ public class HomeController {
 
 	
 	@RequestMapping(method=RequestMethod.GET, value="")
-	public String getHome() {
+	public String getHome(Model model) {
+		
+		//pass data 
 		return "home";
 	}
 }

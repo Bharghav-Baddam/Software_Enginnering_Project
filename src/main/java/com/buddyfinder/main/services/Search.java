@@ -5,62 +5,66 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.buddyfinder.main.models.Friend;
-import com.buddyfinder.main.repository.FriendRepository;
+import com.buddyfinder.main.models.Account;
+import com.buddyfinder.main.models.Activity;
+import com.buddyfinder.main.repository.AccountRepository;
+import com.buddyfinder.main.repository.ActivityRepository;
 
 @Service
 public class Search {
 	
 
-	private Map<String, Friend> friends = new HashMap<>();
 	
 	@Autowired
-	private FriendRepository friendRepository;
+	private ActivityRepository activityRepository;
 	
+	@Autowired
+	private AccountRepository accountRepository;
+	
+	public ArrayList<Activity> getActivities(String activityName, String location, Date date){
+//		Account account1 = new Account("John", "A", "123",
+//				"jan@albany", "ss", "test", "admin", new ArrayList<Account>(),
+//				new ArrayList<Activity>(), new ArrayList<Activity>()
+//				);
+//		Account account2 = new Account("Steve", "A", "123",
+//				"jan@albany", "ss", "test", "admin", new ArrayList<Account>(),
+//				new ArrayList<Activity>(), new ArrayList<Activity>()
+//				);
+//		
+//		Account account3 = new Account("Dog", "A", "123",
+//				"jan@albany", "ss", "test", "admin", new ArrayList<Account>(),
+//				new ArrayList<Activity>(), new ArrayList<Activity>()
+//				);
+//		accountRepository.save(account1);
+//		accountRepository.save(account2);
+//		accountRepository.save(account3);
+//		
+//		ArrayList<Account> list = new ArrayList<>();
+//		
+//		list.add(account2);
+//		list.add(account3);
+//		activityRepository.save(new Activity("New York", "Adirondacks", "Hiking", new Date(1000), account1, list ));
+//		activityRepository.save(new Activity("New York", "Adirondacks", "Date", new Date(1000), account3, new ArrayList<Account>() ));
+//		activityRepository.save(new Activity("New York", "Adirondacks", "Movies", new Date(1000), account1, new ArrayList<Account>() ));
+//		activityRepository.save(new Activity("New York", "Adirondacks", "Hiking", new Date(1000), account2, new ArrayList<Account>() ));
+//		activityRepository.save(new Activity("New York", "Adirondacks", "Hiking", new Date(1000), account3, new ArrayList<Account>() ));
+//		activityRepository.save(new Activity("New York", "Adirondacks", "Hiking", new Date(1000), account1, new ArrayList<Account>() ));
+//		
+//		account1.getFriends().add(account2);
+//		account1.getFriends().add(account3);
+//		accountRepository.save(account1);
+//		account1.getFriends().forEach(x -> System.out.println(x.getFirstName()));
+//		
+//		
+		
+		Optional<Account> x = accountRepository.findById(1);
+		System.out.println(x.orElse(null).getFirstName());
+		return null;
+	}
 
-	
-	public List<Friend> getFriends() {
-		ArrayList<Friend> list = new ArrayList<>();
-//		friendRepository.save(new Friend("1", "John", "New York", new Date((long) 123.23)));
-//		friendRepository.save(new Friend("2","Bharghav", "New York", new Date((long) 123.23)));
-//		friendRepository.save(new Friend("3","Rutvik", "New York", new Date((long) 123.23)));
-//		friendRepository.save(new Friend("4","Zhenjiang", "New York", new Date((long) 123.23)));
-//		friendRepository.save(new Friend("5","Ansel", "New York", new Date((long) 123.23)));
-//		friendRepository.save(new Friend("6","Bharvee", "New York", new Date((long) 123.23)));
-//		friendRepository.save(new Friend("7","Chengwang", "New York", new Date((long) 123.23)));
-		friendRepository.findAll().forEach(x-> list.add(x));
-		
-		return list;
-	}
-	
-	public List<Friend> getFriends(String location, String activity, String date){
-		
-		friendRepository.save(new Friend("1", "John", "New York", new Date((long) 123.23),"Hiking"));
-		friendRepository.save(new Friend("2","Bharghav", "New York", new Date((long) 123.23),"Running"));
-		friendRepository.save(new Friend("3","Rutvik", "New York", new Date((long) 123.23),"Date"));
-		friendRepository.save(new Friend("4","Zhenjiang", "New York", new Date((long) 123.23),"Watching Movie"));
-		friendRepository.save(new Friend("5","Ansel", "New York", new Date((long) 123.23),"Getting Dinner"));
-		friendRepository.save(new Friend("6","Bharvee", "New York", new Date((long) 123.23),"Hiking"));
-		friendRepository.save(new Friend("7","Chengwang", "New York", new Date((long) 123.23),"Hiking"));
-		friendRepository.save(new Friend("8", "Ronald", "New York", new Date((long) 123.23),"Running"));
-		friendRepository.save(new Friend("9","Steven", "New York", new Date((long) 123.23),"Running"));
-		friendRepository.save(new Friend("10","Jack", "New York", new Date((long) 123.23),"Watching Movie"));
-		friendRepository.save(new Friend("11","Mia", "New York", new Date((long) 123.23),"Watching Movie"));
-		friendRepository.save(new Friend("12","Greg", "New York", new Date((long) 123.23),"Getting Dinner"));
-		friendRepository.save(new Friend("13","Tom", "New York", new Date((long) 123.23),"Getting Dinner"));
-		friendRepository.save(new Friend("14","David", "New York", new Date((long) 123.23),"Hiking"));
-		
-		Iterable<Friend> friends = friendRepository.findAll();
-		ArrayList<Friend> listOfFriends = new ArrayList<>();
-		friends.forEach(x->{
-			if(x.getActivity().equals(activity)) {
-				listOfFriends.add(x);
-		}
-		});
-		return listOfFriends;
-	}
 }

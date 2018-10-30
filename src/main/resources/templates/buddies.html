@@ -52,14 +52,14 @@
 						<div class="desc">
 							<div class="top d-flex justify-content-between">
 								<h4>Name:</h4>
-							  <h4 th:text="${Friend.name}"></h4>
+							    <h4 th:text="${Friend.postedBy.firstName}"></h4>
 							
 							</div>
 							<div class="middle">
 								<div class="d-flex justify-content-start">
 									<p>Location: <span th:text="${Friend.location}"></span></p>
-									<p>Availability: <span th:text="${Friend.availability}"></span></p>
-									<p>Activity: <span th:text="${Friend.activity}" ></span></p>
+									<p>Availability: <span th:text="${Friend.date}"></span></p>
+									<p>Activity: <span th:text="${Friend.activityName}" ></span></p>
 								</div>
 							</div>
 							<div class="bottom d-flex justify-content-start">

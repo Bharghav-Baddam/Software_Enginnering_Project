@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Registration</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<style>
+html,
+body {
+    height: 100%;
+}
+
+.container {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+</style>	
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12" style="background-color: dark-grey;">
+				<form action="/register" method="post">
+					<div class="table-responsive">
+						<div class="panel panel-default">
+						<table class="table table-bordered">
+							<thead>
+								<tr>
+								<td>
+									<div class="input-group">
+										<h3>Buffy Finder User Registration</h3>
+									</div>
+								</td>
+							</tr>
+							</thead>
+							<tbody>
+							<tr>
+								<td>
+									<div class="input-group">
+										<span class="input-group-addon"></span> <input
+											id="firstName" type="text" class="form-control"
+											name="firstName" placeholder="First Name">
+									</div>
+		s						</td>
+							</tr>
+							<tr>
+								<td>
+									<div class="input-group">
+										<span class="input-group-addon"></span> <input
+											id="lastName" type="text" class="form-control"
+											name="lastName" placeholder="Last Name">
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<div class="input-group">
+										<span class="input-group-addon"><i
+											class="glyphicon glyphicon-envelope"></i></span> <input id="email"
+											type="text" class="form-control" name="email"
+											placeholder="Email">
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<div class="input-group">
+										<span class="input-group-addon"><i
+											class="glyphicon glyphicon-phone"></i></span> <input id="mobileNumber"
+											type="text" class="form-control" name="mobileNumber"
+											placeholder="Mobile Number">
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<div class="input-group">
+										<span class="input-group-addon"><i
+											class="glyphicon glyphicon-user"></i></span> <input id="userName"
+											type="text" class="form-control" name="userName"
+											placeholder="User name">
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<div class="input-group">
+										<span class="input-group-addon"><i
+											class="glyphicon glyphicon-lock"></i></span> <input id="password"
+											type="password" class="form-control" name="password"
+											placeholder="Password">
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<div class="input-group">
+										<span class="input-group-addon"><i
+											class="glyphicon glyphicon-lock"></i></span> <input id="msg"
+											type="password" class="form-control" name="confirmPassword"
+											placeholder="Confirm Password">
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<div class="input-group">
+										<input id="submit"
+											type="submit" class="btn btn-default" value="Register">
+									</div>
+								</td>
+							</tr>
+							</tbody>
+						</table>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+
+
+	<!-- <table>
+		<tr>
+			<td><label>First Name</label></td>
+			<td><input type="text" name="firstName"></td>
+		</tr>
+		<tr>
+			<td><label>Last Name</label></td>
+			<td><input type="text" name="lastName"></td>
+		</tr>
+		<tr>
+			<td><label>Email Id</label></td>
+			<td><input type="email" name="emailId"></td>
+		</tr>
+		<tr>
+			<td><label>Mobile Number</label></td>
+			<td><input type="number" name="mobileNumber"></td>
+		</tr>
+		<tr>
+			<td><label>User name</label></td>
+			<td><input type="text" name="userName"></td>
+		</tr>
+		<tr>
+			<td><label>Password</label></td>
+			<td><input type="password" name="password"></td>
+		</tr>
+		<tr>
+			<td><label>Confirm Password</label></td>
+			<td><input type="password" name="confirmPassword"></td>
+		</tr>
+	</table> -->
+</body>
+</html>

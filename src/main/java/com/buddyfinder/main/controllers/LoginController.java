@@ -1,5 +1,7 @@
 package com.buddyfinder.main.controllers;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,35 +24,30 @@ public class LoginController {
 	AuthService authService;
 
 	@RequestMapping(value = { "/login" }, method = RequestMethod.GET)
-	public ModelAndView showAddPersonPage(ModelAndView modelAndView) {
+	public String showAddPersonPage(Model model) {
 
 		LoginForm loginForm = new LoginForm();
-		modelAndView.addObject("blogForm", loginForm);
-		modelAndView.setViewName("login.html");
-		;
-		return modelAndView;
+
+		model.addAttribute("loginForm", loginForm);
+		return "login";
 	}
 
 	// TODO: return html
 	@RequestMapping(method = RequestMethod.POST, value = "/login")
-	public RedirectView login(RedirectAttributes redirectAttribute, @ModelAttribute("blogForm") LoginForm loginForm) {
+	public String login( @ModelAttribute("loginForm") LoginForm loginForm, HttpSession session, Model model) {
 
 		Account account = authService.isAuthenticated(loginForm.getEmail(), loginForm.getPassword());
 		// ModelAndView modelAndView = new ModelAndView();
 
 		if (account != null) {
 			
-			redirectAttribute.addFlashAttribute("first_name", account.getFirstName());
-			redirectAttribute.addFlashAttribute("last_name", account.getLastName());
-			redirectAttribute.addFlashAttribute("account_id", account.getAccountId());
-			redirectAttribute.addFlashAttribute("email", account.getEmail());
-
-			// TODO: We need to change this mapping in the database
-			// modelAndView.addObject("friends", account.getFriends());
+			session.setAttribute("account", account);
+			return "home";
 
 		} else {
-			return new RedirectView("/login");
+			model.addAttribute("loginForm", loginForm);
+			return "login";
 		}
-		return new RedirectView("/home");
+
 	}
 }

@@ -1,6 +1,8 @@
 package com.buddyfinder.main;
 
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -9,6 +11,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.buddyfinder.main.models.Account;
+import com.buddyfinder.main.models.Activity;
+import com.buddyfinder.main.repository.AccountRepository;
 import com.buddyfinder.main.services.Search;
 
 @RunWith(SpringRunner.class)
@@ -24,9 +28,18 @@ public class BuddyFinderApplicationTests {
 		 @Autowired
 		 private Search search;
 			
+		 @Autowired
+		 private AccountRepository accountRepository;
 		 
 		 public void runTest() {
-		 search.getActivities("Hiking", "test", new Date(1000));
+
+			
 		 }
 
+		 /*
+		  * 
+		  * public Account( String firstName, String lastName, String password, String email,
+			String securityQuestion, String securityAnswer, String role,List<Account> friends,
+			List<Activity> postedActivities, List<Activity> attendedActivities) {
+		  */
 }

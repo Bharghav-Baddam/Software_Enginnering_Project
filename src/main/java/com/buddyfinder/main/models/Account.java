@@ -28,7 +28,7 @@ public class Account {
 	private String lastName;
 	@Column
 	private String password;
-	@Column
+	@Column(unique=true)
 	private String email;
 	@Column
 	private String securityQuestion;

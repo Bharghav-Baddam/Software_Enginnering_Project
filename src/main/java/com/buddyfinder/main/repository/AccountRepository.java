@@ -6,4 +6,5 @@ import com.buddyfinder.main.models.Account;
 
 public interface AccountRepository extends JpaRepository<Account, Integer>{
 
+	Account findByEmail(String email);
 }

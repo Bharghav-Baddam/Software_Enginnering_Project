@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.buddyfinder.main.repository.AccountRepository;
+import com.buddyfinder.main.services.AuthService;
 
 @Controller
 public class HomeController {
@@ -17,11 +18,17 @@ public class HomeController {
 	@Autowired
 	AccountRepository accountRepository;
 	
+	@Autowired
+	AuthService authService;
+	
 	@RequestMapping(method=RequestMethod.GET, value="/home")
-	public ModelAndView getHome(ModelAndView model) {
+	public ModelAndView getHome(ModelAndView modelAndView, HttpSession session) {
 		
-		model.setViewName("home");
-		return model;
+		modelAndView.setViewName("home");
+		if (authService.isSessionAlive(session.getId())) {
+			session.setAttribute("account", authService.getSession(session.getId()));
+		}
+		return modelAndView;
 	}
 	
 	@RequestMapping(method=RequestMethod.GET, value="/admin")

@@ -24,30 +24,53 @@ public class LoginController {
 	AuthService authService;
 
 	@RequestMapping(value = { "/login" }, method = RequestMethod.GET)
-	public String showAddPersonPage(Model model) {
+	public ModelAndView login(ModelAndView modelAndView, HttpSession session) {
 
-		LoginForm loginForm = new LoginForm();
+		if (authService.isSessionAlive(session.getId())) {
 
-		model.addAttribute("loginForm", loginForm);
-		return "login";
+			session.setAttribute("account", authService.getSession(session.getId()));
+			modelAndView.setViewName("redirect:/home");
+
+		} else {
+
+			LoginForm loginForm = new LoginForm();
+			modelAndView.addObject("loginForm", loginForm);
+			modelAndView.setViewName("login");
+
+		}
+		return modelAndView;
 	}
 
 	// TODO: return html
 	@RequestMapping(method = RequestMethod.POST, value = "/login")
-	public String login( @ModelAttribute("loginForm") LoginForm loginForm, HttpSession session, Model model) {
+	public RedirectView login(RedirectAttributes redirectAttribute, @ModelAttribute("loginForm") LoginForm loginForm,
+			HttpSession session) {
 
-		Account account = authService.isAuthenticated(loginForm.getEmail(), loginForm.getPassword());
-		// ModelAndView modelAndView = new ModelAndView();
+		Account account = authService.isAuthenticated(loginForm.getEmail(), loginForm.getPassword(), session.getId());
 
 		if (account != null) {
-			
+			redirectAttribute.addFlashAttribute("first_name", account.getFirstName());
+			redirectAttribute.addFlashAttribute("last_name", account.getLastName());
+			redirectAttribute.addFlashAttribute("account_id", account.getAccountId());
+			redirectAttribute.addFlashAttribute("email", account.getEmail());
+			// TODO: We need to change this mapping in the database
+			// modelAndView.addObject("friends", account.getFriends());
 			session.setAttribute("account", account);
-			return "home";
 
 		} else {
-			model.addAttribute("loginForm", loginForm);
-			return "login";
+			return new RedirectView("/login");
 		}
+		return new RedirectView("/home");
+	}
 
+	@RequestMapping(value = { "/logout" }, method = RequestMethod.GET)
+	public ModelAndView logout(ModelAndView modelAndView, HttpSession session) {
+
+		if (authService.isSessionAlive(session.getId())) {
+			authService.removeSession(session.getId());
+			session.invalidate();
+		}
+		modelAndView.setViewName("redirect:/home");
+		return modelAndView;
 	}
 }

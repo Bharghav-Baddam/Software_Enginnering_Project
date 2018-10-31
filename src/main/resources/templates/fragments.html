@@ -40,7 +40,8 @@
 					<ul class="list">
 						<li><a href="tel:++880 1234 654 953">1-800-700-7000</a></li>
 						<li><a href="#">Find Buddies Now</a></li>
-						<li><a href="/login">Login / Register</a></li>
+						<li th:if="${session == null || session.account == null}"><a href="/login">Login / Register</a></li>
+						<li th:if="${session != null && session.account != null}"><a href="/logout" >Logout ( <span th:text="${session.account.firstName}"></span>)</a></li>
 					</ul>
 				</div>
 			</div>

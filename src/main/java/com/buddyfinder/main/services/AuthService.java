@@ -48,13 +48,18 @@ public class AuthService {
 		if (isSessionAlive(sessionId)) {
 			return getSession(sessionId);
 		}
+		
 		Account account = getUserByEmail(userEmail);
 		Account authenticatedUser = null;
-		if (account.getPassword().equals(password)) {
+		if(account == null) {
+			return null;
+		}
+		else if (account.getPassword().equals(password) ) {
 			authenticatedUser = account;
 			activeSessions.put(sessionId, account);
 		}
 		return authenticatedUser;
+		
 	}
 
 	public Account getUserByEmail(String userEmail) {

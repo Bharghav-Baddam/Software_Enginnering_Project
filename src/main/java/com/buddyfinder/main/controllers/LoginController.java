@@ -66,7 +66,7 @@ public class LoginController {
 	@RequestMapping(method = RequestMethod.POST, value = "/login")
 	public RedirectView login(RedirectAttributes redirectAttribute, @ModelAttribute("loginForm") LoginForm loginForm,
 			HttpSession session) {
-
+		
 		Account account = authService.isAuthenticated(loginForm.getEmail(), loginForm.getPassword(), session.getId());
 
 		if (account != null && account.isBlocked() == false) {

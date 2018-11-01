@@ -27,22 +27,99 @@ public class Search {
 	@Autowired
 	private AccountRepository accountRepository;
 	
-	public ArrayList<Activity> getActivities(String activityName, String location, String date){
+	public ArrayList<Activity> getActivities(String activityName, String location, Date date){
 		Iterable<Activity> x = activityRepository.findAll();
 		ArrayList<Activity> list = new ArrayList<>();
-		if(activityName.isEmpty() && location.isEmpty()) {
+		//if all fields are empty
+		if(activityName.isEmpty() && location.isEmpty() && date == null) {
 			
 			for(Activity i : x) {
 				list.add(i);
 			}
 			System.out.println(list);
 			return list;
-		}else {
+		
+		}
+		//if only date is available
+		else if(activityName.isEmpty() && location.isEmpty() && date != null){
 		
 		
 			for(Activity i : x) {
+				if(i.getDate().equals(date)
+				) {
+					list.add(i);
+				}
+			}
+			System.out.println(list);
+			return list;
+		}
+		//if only location is available
+		else if(activityName.isEmpty() && !location.isEmpty() && date == null){
+			
+			
+			for(Activity i : x) {
+				if(i.getLocation().equals(location)
+				) {
+					list.add(i);
+				}
+			}
+			System.out.println(list);
+			return list;
+		}
+		//if only activity is available
+		else if(!activityName.isEmpty() && location.isEmpty() && date == null){
+
+			for(Activity i : x) {
+				if(i.getActivityName().equals(activityName)
+				) {
+					list.add(i);
+				}
+			}
+			System.out.println(list);
+			return list;
+		}
+		//if activity and location are available
+		else if(!activityName.isEmpty() && !location.isEmpty() && date == null) {
+			for(Activity i : x) {
 				if(i.getActivityName().equals(activityName) &&
-				i.getLocation().equals(location)
+						i.getLocation().equals(location)
+				) {
+					list.add(i);
+				}
+			}
+			System.out.println(list);
+			return list;
+		}
+		//if activity and date are available
+		else if(!activityName.isEmpty() && location.isEmpty() && date != null) {
+			for(Activity i : x) {
+				if(i.getActivityName().equals(activityName) &&
+						i.getDate().equals(date)
+				) {
+					list.add(i);
+				}
+			}
+			System.out.println(list);
+			return list;
+		}
+		//if location and date are available
+		else if(activityName.isEmpty() && !location.isEmpty() && date != null) {
+			for(Activity i : x) {
+				if(i.getActivityName().equals(activityName) &&
+						i.getDate().equals(date)
+				) {
+					list.add(i);
+				}
+			}
+			System.out.println(list);
+			return list;
+		}
+		
+		else {
+			for(Activity i : x) {
+				if(i.getActivityName().equals(activityName) &&
+						i.getLocation().equals(location) && 
+						i.getDate().equals(date)
 				) {
 					list.add(i);
 				}

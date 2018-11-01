@@ -1,12 +1,15 @@
 package com.buddyfinder.main.services;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.buddyfinder.main.models.Account;
+import com.buddyfinder.main.models.Activity;
 import com.buddyfinder.main.repository.AccountRepository;
 
 @Service
@@ -16,6 +19,31 @@ public class AuthService {
 	AccountRepository accountRepository;
 
 	private static Map<String, Account> activeSessions = new HashMap<String, Account>();
+	
+	public void createAccount(String email,String password1,String firstName,String lastName) {
+		Account account = new Account(firstName, lastName, password1, email, "", "", "user", new ArrayList<>(), 
+				new ArrayList<>(), new ArrayList<>());
+		accountRepository.save(account);
+	}
+	
+	/*String firstName, String lastName, String password, String email,
+	String securityQuestion, String securityAnswer, String role,List<Account> friends,
+	List<Activity> postedActivities, List<Activity> attendedActivities
+	*/
+	
+	public boolean isUniqueEmail(String email) {
+		ArrayList<Account> accounts = (ArrayList<Account>) accountRepository.findAll();
+		Boolean unique = true;
+		for(Account x : accounts) {
+			if(x.getEmail().equals(email)) {
+				unique = false;
+			}
+		}
+		
+		return unique;
+		
+		
+	}
 
 	public Account isAuthenticated(String userEmail, String password, String sessionId) {
 

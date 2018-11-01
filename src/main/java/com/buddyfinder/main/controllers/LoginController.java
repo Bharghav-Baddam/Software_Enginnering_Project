@@ -22,6 +22,27 @@ public class LoginController {
 
 	@Autowired
 	AuthService authService;
+	
+	@RequestMapping(method=RequestMethod.GET, value="/register")
+	public String getLoginPage(
+			) {
+		
+		return "registration";
+	}
+		
+	
+	
+	@RequestMapping(method=RequestMethod.POST, value="/register")
+	public String registerUser(Model model, @RequestParam String email, 
+			@RequestParam String password1, @RequestParam String firstName, @RequestParam String lastName
+			) {
+		
+		if(authService.isUniqueEmail(email)) {
+			authService.createAccount(email, password1, firstName, lastName);
+		}
+
+		return "redirect:/login";
+	}
 
 	@RequestMapping(value = { "/login" }, method = RequestMethod.GET)
 	public ModelAndView login(ModelAndView modelAndView, HttpSession session) {

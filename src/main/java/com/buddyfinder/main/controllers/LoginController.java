@@ -69,7 +69,7 @@ public class LoginController {
 
 		Account account = authService.isAuthenticated(loginForm.getEmail(), loginForm.getPassword(), session.getId());
 
-		if (account != null) {
+		if (account != null && account.isBlocked() == false) {
 			redirectAttribute.addFlashAttribute("first_name", account.getFirstName());
 			redirectAttribute.addFlashAttribute("last_name", account.getLastName());
 			redirectAttribute.addFlashAttribute("account_id", account.getAccountId());
@@ -78,7 +78,12 @@ public class LoginController {
 			// modelAndView.addObject("friends", account.getFriends());
 			session.setAttribute("account", account);
 
-		} else {
+		} 
+		else if(account != null && account.isBlocked() == true) {
+			return new RedirectView("/blocked");
+		}
+		else {
+			
 			return new RedirectView("/login");
 		}
 		return new RedirectView("/home");
@@ -92,6 +97,13 @@ public class LoginController {
 			session.invalidate();
 		}
 		modelAndView.setViewName("redirect:/home");
+		return modelAndView;
+	}
+	
+	@RequestMapping(value = { "/blocked" }, method = RequestMethod.GET)
+	public ModelAndView blocked(ModelAndView modelAndView) {
+
+		modelAndView.setViewName("blocked");
 		return modelAndView;
 	}
 }

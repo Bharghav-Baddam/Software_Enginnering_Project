@@ -36,6 +36,8 @@ public class Account {
 	private String securityAnswer;
 	@Column
 	private String role;
+	@Column
+	private boolean blocked;
 	
 	//mappedBy is the name of the field of the linked Activity
 	@OneToMany(mappedBy="postedBy")
@@ -61,6 +63,7 @@ public class Account {
 		this.role = role;
 		this.postedActivities = postedActivities;
 		this.attendedActivities = attendedActivities;
+		this.blocked = false;
 	}
 
 //	public Account(Integer accountId, String firstName, String lastName, String password, String email,
@@ -90,7 +93,6 @@ public class Account {
 
 
 
-
 	public void setAccountId(Integer accountId) {
 		this.accountId = accountId;
 	}
@@ -105,13 +107,6 @@ public class Account {
 
 
 
-	public void setPostedActivities(ArrayList<Activity> postedActivities) {
-		this.postedActivities = postedActivities;
-	}
-
-
-
-
 	public List<Activity> getAttendedActivities() {
 		return attendedActivities;
 	}
@@ -119,13 +114,22 @@ public class Account {
 
 
 
-	public void setAttendedActivities(ArrayList<Activity> attendedActivities) {
-		this.attendedActivities = attendedActivities;
+
+	public boolean isBlocked() {
+		return blocked;
 	}
 
+	public void setBlocked(boolean blocked) {
+		this.blocked = blocked;
+	}
 
+	public void setPostedActivities(List<Activity> postedActivities) {
+		this.postedActivities = postedActivities;
+	}
 
-
+	public void setAttendedActivities(List<Activity> attendedActivities) {
+		this.attendedActivities = attendedActivities;
+	}
 
 	public String getFirstName() {
 		return firstName;

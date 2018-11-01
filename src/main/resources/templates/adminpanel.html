@@ -1,18 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <script type="text/javascript">
-function submit(){
-	        
-    if($("#user").find("option:selected").text()==""){
-    	document.getElementById("userError").innerHTML="<font color='red'>please choose a user</font>";
- }else if($("#action").find("option:selected").text()=="")
- 	{
-	 document.getElementById("actionError").innerHTML="<font color='red'>please choose an action</font>";
- 	}else{
- 		 alert($("#user").find("option:selected").text()+"--"+$("#action").find("option:selected").text());
- 	}
-   
-}
+
     	
         
 
@@ -58,23 +47,26 @@ function submit(){
 					</p>
 				</div>
 			</div>
+			<form action="/adminpanel/action" method="POST">
   			<div class="row">
   			<div class="col-lg-4 col-md-6 col-xs-6">
-									<select id="user" class="app-select form-control">
+									<select name="user" id="user" class="app-select form-control">
 										<option data-display="Choose a user" value="">choose user</option>
-										<option  th:each="Account:${Accounts}" th:text="${Account.firstName+Account.lastName}" th:value="${Account.accountId}"></option>
+										<option  th:each="account:${Accounts}" th:text="${account.email}" th:value="${account.accountId}"></option>
 									</select>
 								</div>
 			<div class="col-lg-4 col-md-6 col-xs-6">
-									<select id="action" class="app-select form-control">
+									<select name="action" id="action" class="app-select form-control">
 										<option data-display="Choose an action" value="">choose action</option>
-										<option value="Block">Block this user</option>
-										<option value="Delete">Delete this user</option>
+										<option value="block">Block this user</option>
+										<option value="unblock">Unblock this user</option>
 									</select>
 								</div>					
   			  <div class="col-lg-4 col-md-6 col-xs-6"> 
-  			  <button class="primary-btn" id="btn_submt" onclick="submit()">Confirm<span class="lnr lnr-arrow-right"></span></button>
-  			  </div></div>		
+  			  <button class="primary-btn" id="btn_submt" >Confirm<span class="lnr lnr-arrow-right"></span></button>
+  			  </div>
+  			  </div>		
+  			  </form>
   			   
 			<div class="row">
   			<div class="col-lg-4 col-md-6 col-xs-6">

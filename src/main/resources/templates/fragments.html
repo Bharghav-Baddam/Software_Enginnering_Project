@@ -39,8 +39,9 @@
 				<div class="d-flex justify-content-end align-items-center">
 					<ul class="list">
 						<li><a href="tel:++880 1234 654 953">1-800-700-7000</a></li>
-						<li><a href="#">Find Buddies Now</a></li>
-						<li th:if="${session == null || session.account == null}"><a href="/login">Login / Register</a></li>
+						<li><a href="/search">Find Buddies Now</a></li>
+						<li th:if="${session == null || session.account == null}"><a href="/login">Login</a></li>
+						<li th:if="${session == null || session.account == null}"><a href="/register">Register</a></li>
 						<li th:if="${session != null && session.account != null}"><a href="/logout" >Logout ( <span th:text="${session.account.firstName}"></span>)</a></li>
 					</ul>
 				</div>

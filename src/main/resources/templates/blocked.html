@@ -11,50 +11,25 @@
 	<header th:replace="fragments :: header"></header>
 	<!-- End Header Area -->
 
-
+	
 	<!-- start banner Area -->
-	<section class="home-banner-area relative" id="home">
+	<section class="banner-area relative" id="home">
 		<div class="overlay overlay-bg"></div>
 		<div class="container">
-			<div class="row fullscreen align-items-end justify-content-center">
-				<div class="banner-content col-lg-12 col-md-12">
-					<h1>Login</h1>
-					<div class="search-field">
-						<form class="search-form" th:action="@{/login}" th:object="${loginForm}" method="POST">
-							<div class="row">
-								<div
-									class="col-lg-12 d-flex align-items-center justify-content-center toggle-wrap">
-									<div class="row">
-										<div class="col">
-											<h4 class="search-title">Please enter</h4>
-										</div>
-									</div>
-								</div>
-								<div class="col-lg-4 col-md-6 col-xs-6">
-									<input class="form-control" name="activity" type="text"
-										placeholder="Email" th:field="*{email}" ></input>
-								</div>
+			<div
+				class="row d-flex text-center align-items-center justify-content-center">
+				<div class="about-content col-lg-12">
 
-								<div class="col-lg-4 col-md-6 col-xs-6">
-									<input class="form-control" name="activity" type="password"
-										th:field="*{password}" placeholder="Password"></input>
-								</div>
+					<h1 class="text-white">
+					Sorry you are blocked.
 
-								<div class="col-lg-4 d-flex justify-content-end">
-									<!-- <input class="primary-btn" name="Submit" value="submit /"> -->
-									<input class="primary-btn" type="submit" value="Login"> 
-										<!-- Login<span class="lnr lnr-arrow-right"></span> -->
-									<!-- </input> -->
-								</div>
-							</div>
-						</form>
-					</div>
+						<p>Either you breached terms of service or your account has been compromised</p>
+					</h1>
 				</div>
 			</div>
 		</div>
 	</section>
 	<!-- End banner Area -->
-
 
 
 

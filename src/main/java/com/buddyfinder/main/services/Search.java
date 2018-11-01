@@ -18,15 +18,13 @@ import com.buddyfinder.main.repository.ActivityRepository;
 
 @Service
 public class Search {
-	
 
-	
 	@Autowired
 	private ActivityRepository activityRepository;
-	
+
 	@Autowired
 	private AccountRepository accountRepository;
-	
+
 	public ArrayList<Activity> getActivities(String activityName, String location, Date date){
 		Iterable<Activity> x = activityRepository.findAll();
 		ArrayList<Activity> list = new ArrayList<>();
@@ -127,6 +125,17 @@ public class Search {
 			System.out.println(list);
 			return list;
 		}
+	}
+	
+	public ArrayList<Activity> getMyActivity(Account account) {
+		ArrayList<Activity> activities = getActivities("", "", null);
+		ArrayList<Activity> myActivities = new ArrayList<>();
+		for (Activity a : activities) {
+			if (account.getAccountId().equals(a.getPostedBy().getAccountId())) {
+				myActivities.add(a);
+			}
+		}
+		return myActivities;
 	}
 
 }

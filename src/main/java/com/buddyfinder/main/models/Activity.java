@@ -17,10 +17,9 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Activity")
 public class Activity {
 	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(unique=true, nullable=false)
 	private Integer activityId;
 
@@ -36,23 +35,23 @@ public class Activity {
 	@Column
 	private Date date;
 	
-	@ManyToOne
+	@OneToOne
 	private Account postedBy;
 	
-	@ManyToMany
+	/*@ManyToMany
 	@JoinTable(name="activityAccount",
 		joinColumns = @JoinColumn(name="activityId", referencedColumnName="activityId"),
-		inverseJoinColumns = @JoinColumn(name="accountId", referencedColumnName="accountId"))
-	private List<Account> attendedBy;
+		inverseJoinColumns = @JoinColumn(name="accountId", referencedColumnName="accountId"))*/
+	@OneToOne
+	private Account attendedBy;
 	
 	
 	public Activity() {
 		
 	}
 
-
 	public Activity( String location, String description, String activityName, Date date,
-			Account postedBy, List<Account> attendedBy) {
+			Account postedBy, Account attendedBy) {
 		super();
 		this.location = location;
 		this.description = description;
@@ -123,15 +122,13 @@ public class Activity {
 	}
 
 
-	public List<Account> getAttendedBy() {
+	public Account getAttendedBy() {
 		return attendedBy;
 	}
 
 
-	public void setAttendedBy(List<Account> attendedBy) {
+	public void setAttendedBy(Account attendedBy) {
 		this.attendedBy = attendedBy;
 	}
-	
-	
 	
 }

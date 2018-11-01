@@ -21,15 +21,13 @@ public class AuthService {
 	private static Map<String, Account> activeSessions = new HashMap<String, Account>();
 	
 	public void createAccount(String email,String password1,String firstName,String lastName) {
-		Account account = new Account(firstName, lastName, password1, email, "", "", "user", new ArrayList<>(), 
-				new ArrayList<>(), new ArrayList<>());
+		Account account = new Account(firstName, lastName, password1, email, "", "", "user", null, null);
 		accountRepository.save(account);
 	}
-	
+
 	/*String firstName, String lastName, String password, String email,
-	String securityQuestion, String securityAnswer, String role,List<Account> friends,
-	List<Activity> postedActivities, List<Activity> attendedActivities
-	*/
+			String securityQuestion, String securityAnswer, String role,
+			List<Activity> postedActivities, List<Activity> attendedActivitie*/
 	
 	public boolean isUniqueEmail(String email) {
 		ArrayList<Account> accounts = (ArrayList<Account>) accountRepository.findAll();

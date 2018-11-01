@@ -32,7 +32,7 @@ public class BuddyFinderApplicationTests {
 		 private AccountRepository accountRepository;
 		 
 		 public void runTest() {
-
+			 
 			
 		 }
 

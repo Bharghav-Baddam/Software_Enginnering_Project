@@ -58,6 +58,7 @@
 							<li class="menu-active"><a href="/home">home</a></li>
 							<li><a href="/search">search</a></li>
 							<li><a href="about.html">about</a></li>
+							<li th:if="${session != null && session.account != null}"><a href="/myactivity">My Activities</a></li>
 							<li class="menu-has-children"><a href="">Pages</a>
 								<ul>
 									<li><a href="agents.html">Agents</a></li>

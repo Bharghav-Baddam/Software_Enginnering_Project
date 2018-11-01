@@ -3,6 +3,7 @@ package com.buddyfinder.main.controllers;
 import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,7 +13,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
+import com.buddyfinder.main.forms.LoginForm;
+import com.buddyfinder.main.services.AuthService;
 import com.buddyfinder.main.services.Search;
 
 @Controller
@@ -21,6 +25,9 @@ public class FindFriendController {
 	
 	@Autowired
 	private Search search;
+	
+	@Autowired
+	AuthService authService;
 
 	@RequestMapping(method=RequestMethod.GET, value="")
 	public String findFriend(Model model) {
@@ -60,6 +67,7 @@ public class FindFriendController {
 //		model.addAttribute("Friends", search.getFriends(location, activity, date));
 //		return "buddies";
 //	}	
+
 
 }
 

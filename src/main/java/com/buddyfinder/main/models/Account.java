@@ -37,25 +37,19 @@ public class Account {
 	@Column
 	private String role;
 	
-
-	@OneToMany(mappedBy="accountId")
-	private List<Account> friends;
-	
 	//mappedBy is the name of the field of the linked Activity
 	@OneToMany(mappedBy="postedBy")
 	private List<Activity> postedActivities;
 	
-	@ManyToMany(mappedBy="attendedBy")
+	@OneToMany(mappedBy="attendedBy")
 	private List<Activity> attendedActivities;
-
 
 	public Account() {
 		
 	}
 
-
 	public Account( String firstName, String lastName, String password, String email,
-			String securityQuestion, String securityAnswer, String role,List<Account> friends,
+			String securityQuestion, String securityAnswer, String role,
 			List<Activity> postedActivities, List<Activity> attendedActivities) {
 		super();
 		this.firstName = firstName;
@@ -65,7 +59,6 @@ public class Account {
 		this.securityQuestion = securityQuestion;
 		this.securityAnswer = securityAnswer;
 		this.role = role;
-		this.friends = friends;
 		this.postedActivities = postedActivities;
 		this.attendedActivities = attendedActivities;
 	}
@@ -203,22 +196,4 @@ public class Account {
 		this.role = role;
 	}
 
-
-
-
-
-	public List<Account> getFriends() {
-		return friends;
-	}
-
-
-	public void setFriends(ArrayList<Account> friends) {
-		this.friends = friends;
-	}
-	
-	
-
-
-
-	
 }

@@ -58,17 +58,11 @@
 						<ul class="nav-menu">
 							<li class="menu-active"><a href="/home">home</a></li>
 							<li><a href="/search">search</a></li>
-							<li><a href="about.html">about</a></li>
+							<li><a href="/about">about</a></li>
 							<li th:if="${session != null && session.account != null}"><a href="/myactivity">My Activities</a></li>
-							<li class="menu-has-children"><a href="">Pages</a>
-								<ul>
-									<li><a href="agents.html">Agents</a></li>
-									<li><a href="elements.html">Elements</a></li>
-								</ul>
-							</li>
 							<li th:if="${session.account != null && session.account.role == 'admin'}"><a href="/adminpanel">Admin Panel</a></li>
 							
-							<li><a href="contact.html">Contact</a></li>
+							<li><a href="/contact">Contact</a></li>
 						</ul>
 					</nav>
 					<!--######## #nav-menu-container -->

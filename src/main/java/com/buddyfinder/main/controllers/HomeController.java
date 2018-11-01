@@ -50,6 +50,18 @@ public class HomeController {
 		model.addAttribute("Accounts", accountRepository.findAll());
 		return "adminpanel";
 	}
+	
+	@RequestMapping(method = RequestMethod.GET, value = "/contact")
+	public String getContact(Model model, HttpSession session) {
+		//model.addAttribute("Accounts", accountRepository.findAll());
+		return "contact";
+	}
+	
+	@RequestMapping(method = RequestMethod.GET, value = "/about")
+	public String getAbout(Model model, HttpSession session) {
+		//model.addAttribute("Accounts", accountRepository.findAll());
+		return "about";
+	}
 
 	@RequestMapping(method = RequestMethod.GET, value = "/myactivity")
 	public ModelAndView myActivities(ModelAndView modelAndView, HttpSession session) {

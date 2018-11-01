@@ -1,7 +1,25 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+<script type="text/javascript">
+function submit(){
+	        
+    if($("#user").find("option:selected").text()==""){
+    	document.getElementById("userError").innerHTML="<font color='red'>please choose a user</font>";
+ }else if($("#action").find("option:selected").text()=="")
+ 	{
+	 document.getElementById("actionError").innerHTML="<font color='red'>please choose an action</font>";
+ 	}else{
+ 		 alert($("#user").find("option:selected").text()+"--"+$("#action").find("option:selected").text());
+ 	}
+   
+}
+    	
+        
 
+    </script>
 <head th:replace="fragments :: head">
+
+    
 
 </head>
 
@@ -34,38 +52,40 @@
 		<div class="container">
 			<div class="row d-flex justify-content-center">
 				<div class="col-md-10 header-text">
-					<h1>Buddies near you</h1>
+					<h1>Hello,Admin!</h1>
 					<p>
-						Go and find a buddy!
+						Go and find a user!
 					</p>
 				</div>
 			</div>
   			<div class="row">
-  			   <th:block th:each="Account : ${Accounts}">
-				<div class="col-lg-4">
-					<div class="single-property">
-					
-						<div class="images">
-							<img class="img-fluid mx-auto d-block" src="/img/s1.jpg" alt="">
-						</div>
-
-						<div class="desc">
-							<div class="top d-flex justify-content-between">
-								<h4>Name:</h4>
-							  <h4 th:text="${Account.firstName}"></h4>
-							  <h4 th:text="${Account.lastName}"></h4>
-							</div>
-							<div class="bottom d-flex justify-content-start">
-								<p><span class="lnr lnr-heart"></span> 15 Likes</p>
-								<p><span class="lnr lnr-bubble"></span> 02 Comments</p>
-							</div>
-						</div>
-					</div>
-			</div>
-			</th:block>
+  			<div class="col-lg-4 col-md-6 col-xs-6">
+									<select id="user" class="app-select form-control">
+										<option data-display="Choose a user" value="">choose user</option>
+										<option  th:each="Account:${Accounts}" th:text="${Account.firstName+Account.lastName}" th:value="${Account.accountId}"></option>
+									</select>
+								</div>
+			<div class="col-lg-4 col-md-6 col-xs-6">
+									<select id="action" class="app-select form-control">
+										<option data-display="Choose an action" value="">choose action</option>
+										<option value="Block">Block this user</option>
+										<option value="Delete">Delete this user</option>
+									</select>
+								</div>					
+  			  <div class="col-lg-4 col-md-6 col-xs-6"> 
+  			  <button class="primary-btn" id="btn_submt" onclick="submit()">Confirm<span class="lnr lnr-arrow-right"></span></button>
+  			  </div></div>		
+  			   
+			<div class="row">
+  			<div class="col-lg-4 col-md-6 col-xs-6">
+								<label id="userError"></label>
+								</div>
+			<div class="col-lg-4 col-md-6 col-xs-6">
+									<label id="actionError"></label>
+								</div>					
+  			  	
 			
-			
-		</div>
+		</div></div>
 	</section>
 	<!-- End property Area -->
 

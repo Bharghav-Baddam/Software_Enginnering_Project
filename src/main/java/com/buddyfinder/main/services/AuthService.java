@@ -39,8 +39,6 @@ public class AuthService {
 		}
 		
 		return unique;
-		
-		
 	}
 
 	public Account isAuthenticated(String userEmail, String password, String sessionId) {

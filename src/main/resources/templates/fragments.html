@@ -51,11 +51,11 @@
 			<div class="container">
 				<div class="row align-items-center justify-content-between d-flex">
 					<div id="logo">
-						<a href="/"><img src="img/logo.png" alt="" title="" /></a>
+						<a href="/home"><img src="img/logo.png" alt="" title="" /></a>
 					</div>
 					<nav id="nav-menu-container">
 						<ul class="nav-menu">
-							<li class="menu-active"><a href="/">home</a></li>
+							<li class="menu-active"><a href="/home">home</a></li>
 							<li><a href="/search">search</a></li>
 							<li><a href="about.html">about</a></li>
 							<li class="menu-has-children"><a href="">Pages</a>
@@ -64,6 +64,8 @@
 									<li><a href="elements.html">Elements</a></li>
 								</ul>
 							</li>
+							<li th:if="${session.account != null && session.account.role == 'admin'}"><a href="/adminpanel">Admin Panel</a></li>
+							
 							<li><a href="contact.html">Contact</a></li>
 						</ul>
 					</nav>

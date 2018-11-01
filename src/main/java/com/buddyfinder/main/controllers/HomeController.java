@@ -31,7 +31,7 @@ public class HomeController {
 		return modelAndView;
 	}
 	
-	@RequestMapping(method=RequestMethod.GET, value="/admin")
+	@RequestMapping(method=RequestMethod.GET, value="/adminpanel")
 	public String getAdmin(Model model, HttpSession session) {
 		model.addAttribute("Accounts", accountRepository.findAll());
 		return "adminpanel";

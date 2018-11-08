@@ -35,7 +35,7 @@ public class HomeController {
 	@Autowired
 	UserService userService;
 
-	@RequestMapping(method = RequestMethod.GET, value = "/home")
+	@RequestMapping(method = RequestMethod.GET, value = {"/", "/home"})
 	public ModelAndView getHome(ModelAndView modelAndView, HttpSession session) {
 
 		modelAndView.setViewName("home");

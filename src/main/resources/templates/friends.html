@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments :: head">
-<link th:replace="fragments :: bootstrap"></link>
+<!--<link th:replace="fragments :: bootstrap"></link>-->
 </head>
 <body>
 
-
-<nav th:replace="fragments :: nav"></nav>
-
+<!-- Start Header Area -->
+<header th:replace="fragments :: header"></header>
+<!-- End Header Area -->
 
 <table class="table" style="width:100%">
 <thead>
@@ -25,6 +25,12 @@
 </tr> 
 </tbody>
 </table>
+
+<!-- start footer Area -->
+<footer th:replace="fragments :: footer">
+
+</footer>
+<!-- End footer Area -->
 
 <src th:replace="fragments :: stylesrc"></src>
 </body>

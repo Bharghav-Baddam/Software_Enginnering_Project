@@ -91,7 +91,7 @@
 			<!-- End banner Area -->
 
 			<div class="row">
-				<th:block th:each="Friend : ${Friends}">
+				<th:block th:each="activity : ${myPostedActivities}">
 					<div class="col-lg-4">
 						<div class="single-property">
 
@@ -102,20 +102,65 @@
 							<div class="desc">
 								<div class="top d-flex justify-content-between">
 									<h4>Name:</h4>
-									<h4 th:text="${Friend.postedBy.firstName}"></h4>
+									<h4 th:text="${activity.postedBy.firstName}"></h4>
 
 								</div>
 								<div class="middle">
 									<div class="d-flex justify-content-start">
 
 										<p>
-											Location: <span th:text="${Friend.location}"></span>
+											Location: <span th:text="${activity.location}"></span>
 										</p>
 										<p>
-											Availability: <span th:text="${Friend.date}"></span>
+											Availability: <span th:text="${activity.date}"></span>
 										</p>
 										<p>
-											Activity: <span th:text="${Friend.activityName}"></span>
+											Activity: <span th:text="${activity.activityName}"></span>
+										</p>
+									</div>
+								</div>
+								<div class="bottom d-flex justify-content-start">
+									<p>
+										<span class="lnr lnr-heart"></span> 15 Likes
+									</p>
+									<p>
+										<span class="lnr lnr-bubble"></span> 02 Comments
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</th:block>
+
+
+			</div>
+			
+			<div class="row">
+				<th:block th:each="activity : ${myAttendedActivities}">
+					<div class="col-lg-4">
+						<div class="single-property">
+
+							<div class="images">
+								<img class="img-fluid mx-auto d-block" src="/img/s1.jpg" alt="">
+							</div>
+
+							<div class="desc">
+								<div class="top d-flex justify-content-between">
+									<h4>Name:</h4>
+									<h4 th:text="${activity.postedBy.firstName}"></h4>
+
+								</div>
+								<div class="middle">
+									<div class="d-flex justify-content-start">
+
+										<p>
+											Location: <span th:text="${activity.location}"></span>
+										</p>
+										<p>
+											Availability: <span th:text="${activity.date}"></span>
+										</p>
+										<p>
+											Activity: <span th:text="${activity.activityName}"></span>
 										</p>
 									</div>
 								</div>

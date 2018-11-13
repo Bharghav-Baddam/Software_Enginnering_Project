@@ -138,4 +138,22 @@ public class Search {
 		return myActivities;
 	}
 
+	public ArrayList<Activity> getMyPostedActivities(Account account) {
+		List<Activity> accList =account.getPostedActivities();
+		ArrayList<Activity> list = new ArrayList<>();
+		for(Activity i : accList) {
+			list.add(i);
+		}
+		return list;
+	 
+	}
+	public ArrayList<Activity> getMyAttendedActivities(Account account) {
+		List<Activity> accList =account.getAttendedActivities();
+		ArrayList<Activity> list = new ArrayList<>();
+		for(Activity i : accList) {
+			list.add(i);
+		}
+		return list;
+	 
+	}
 }

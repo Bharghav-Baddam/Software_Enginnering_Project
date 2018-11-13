@@ -12,7 +12,9 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import com.buddyfinder.main.models.Account;
 import com.buddyfinder.main.models.Activity;
+import com.buddyfinder.main.models.Friend;
 import com.buddyfinder.main.repository.AccountRepository;
+import com.buddyfinder.main.repository.FriendRepository;
 import com.buddyfinder.main.services.Search;
 
 @RunWith(SpringRunner.class)
@@ -31,9 +33,26 @@ public class BuddyFinderApplicationTests {
 		 @Autowired
 		 private AccountRepository accountRepository;
 		 
+		 @Autowired
+		 private FriendRepository friendRepository;
+		 
 		 public void runTest() {
+			 Account account1 = new Account("John", "An", "123456", "jan2@albany.edu", "123", "", "user",
+					 new ArrayList<Activity>(), new ArrayList<Activity>() );
+			 Account account2 = new Account("John", "An", "123456", "jan1@albany.edu", "123", "", "user",
+					 new ArrayList<Activity>(), new ArrayList<Activity>() );
+			 Account account3 = new Account("John", "An", "123456", "jan3@albany.edu", "123", "", "user",
+					 new ArrayList<Activity>(), new ArrayList<Activity>() );
+			 accountRepository.save(account1);
+			 accountRepository.save(account2);
+			 accountRepository.save(account3);
+			 Friend friend = new Friend();
 			 
-			
+			 friend.setFrom(account1);
+			 friend.setTo(account2);
+			 
+			 friendRepository.save(friend);
+			 
 		 }
 
 		 /*

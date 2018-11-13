@@ -1,11 +1,13 @@
 package com.buddyfinder.main.models;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -38,12 +40,13 @@ public class Account {
 	private String role;
 	@Column
 	private boolean blocked;
-	
+
+
 	//mappedBy is the name of the field of the linked Activity
-	@OneToMany(mappedBy="postedBy")
+	@OneToMany(mappedBy="postedBy",fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private List<Activity> postedActivities;
 	
-	@OneToMany(mappedBy="attendedBy")
+	@OneToMany(mappedBy="attendedBy",fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private List<Activity> attendedActivities;
 
 	public Account() {
@@ -85,8 +88,7 @@ public class Account {
 //	}
 
 
-
-
+	
 	public Integer getAccountId() {
 		return accountId;
 	}

@@ -52,7 +52,7 @@
 						<div class="desc">
 							<div class="top d-flex justify-content-between">
 								<h4>Name:</h4>
-							    <h4 th:text="${Friend.postedBy.firstName}"></h4>
+							    <a th:href="@{'/users/' + ${Friend.postedBy.accountId} + '/wallPosts'}"><h4 th:text="${Friend.postedBy.firstName}"></h4></a>
 							
 							</div>
 							<div class="middle">

@@ -18,6 +18,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 @Entity
 @Table(name = "Account")
 public class Account {
@@ -43,10 +46,12 @@ public class Account {
 
 
 	//mappedBy is the name of the field of the linked Activity
-	@OneToMany(mappedBy="postedBy",fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	//@LazyCollection(LazyCollectionOption.FALSE)
+	@OneToMany(mappedBy="postedBy", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private List<Activity> postedActivities;
 	
-	@OneToMany(mappedBy="attendedBy",fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	//@LazyCollection(LazyCollectionOption.FALSE)
+	@OneToMany(mappedBy="attendedBy", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private List<Activity> attendedActivities;
 
 	public Account() {
@@ -201,5 +206,17 @@ public class Account {
 	public void setRole(String role) {
 		this.role = role;
 	}
+	
+	//@LazyCollection(LazyCollectionOption.FALSE)
+/*	@OneToMany(mappedBy="wallPostOn", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	private List<Wall> wallPosts;
+
+	public List<Wall> getWallPosts() {
+		return wallPosts;
+	}
+
+	public void setWallPosts(List<Wall> wallPosts) {
+		this.wallPosts = wallPosts;
+	}*/
 
 }

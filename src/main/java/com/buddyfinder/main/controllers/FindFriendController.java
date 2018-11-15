@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.buddyfinder.main.forms.LoginForm;
@@ -85,31 +88,22 @@ public class FindFriendController {
 	}
 	
 	
-	@RequestMapping(method=RequestMethod.GET, value="/requestActivity")
-	public void requestActivity(@RequestParam String id, HttpSession session) {
+	@RequestMapping(method= {RequestMethod.POST, RequestMethod.GET}, value="/requestActivity",consumes=MediaType.APPLICATION_JSON_VALUE)
+	@ResponseStatus(value = HttpStatus.OK)
+	public void requestActivity(@RequestBody String id,HttpSession session) {
 		
 		userService.requestActivity(id, (Account)session.getAttribute("account"));
-//		
-//		return "redirect/";
+
 	}
 	
-	@RequestMapping(method=RequestMethod.GET, value="/confirmActivity")
-	public void confirmActivity(@RequestParam String id, HttpSession session) {
+	@RequestMapping(method= {RequestMethod.POST, RequestMethod.GET}, value="/confirmActivity",consumes=MediaType.APPLICATION_JSON_VALUE)
+	@ResponseStatus(value = HttpStatus.OK)
+	public void confirmActivity(@RequestBody String id,HttpSession session) {
 		
 		userService.confirmActivity(id, (Account)session.getAttribute("account"));
-//		
-//		return "redirect/";
+		
 	}
-//	
-//	@RequestMapping(method=RequestMethod.GET, value="/findfriends")
-//	public String findFriend(@RequestParam String location,@RequestParam String activity,
-//			@RequestParam String date, Model model) {
-//		System.out.println(location);
-//		//search.getFriends will have params passed by @RequestParam annotation
-//		//model.addAttribute("Friends", search.getFriends(location, activity, date));
-//		model.addAttribute("Friends", search.getFriends(location, activity, date));
-//		return "buddies";
-//	}	
+	
 
 
 }

@@ -119,7 +119,7 @@
 									
 									<span th:case="null">Currently looking for a match</span>
 									
-									<a th:case="pending" th:href="@{/search/confirmActivity(id=${activity.activityId})}"><button>Found, please confirm</button></a>
+									<button th:case="pending" th:onclick="'javascript:confirmActivity('+${activity.activityId} + ', this)'">Found, please confirm</button>
 									<span th:case="confirmed" th:text="Confirmed">Confirmed</span>
 								</div>
 							</div>
@@ -196,6 +196,7 @@
 	<script src="/js/jquery.magnific-popup.min.js"></script>
 	<script src="/js/owl.carousel.min.js"></script>
 	<script src="/js/main.js"></script>
+		<script src="/js/ajax.js"></script>
 </body>
 
 </html>

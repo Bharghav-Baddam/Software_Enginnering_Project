@@ -118,8 +118,10 @@
 								<div class="bottom d-flex justify-content-start"  th:switch="${activity.status}">
 									
 									<span th:case="null">Currently looking for a match</span>
-									
-									<button th:case="pending" th:onclick="'javascript:confirmActivity('+${activity.activityId} + ', this)'">Found, please confirm</button>
+									<div th:case="pending">
+									<button th:onclick="'javascript:confirmActivity('+${activity.activityId} + ', this)'">Found, please confirm</button>
+									<button th:onclick="'javascript:declineActivity('+${activity.activityId} + ', this)'">Decline</button>
+									</div>
 									<span th:case="confirmed" th:text="Confirmed">Confirmed</span>
 								</div>
 							</div>
@@ -162,7 +164,7 @@
 								</div>
 								<div class="bottom d-flex justify-content-start" th:switch="${activity.status}">
 									<span th:case="pending">Currently waiting for approval</span>
-									<span th:case="confirmed">Found!</span>
+									<span th:case="confirmed">Confirmed!</span>
 								</div>
 							</div>
 						</div>

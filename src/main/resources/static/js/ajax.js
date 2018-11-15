@@ -28,7 +28,28 @@ function confirmActivity(id, reference){
 	    type: "POST",
 	    success: function(){
 	      console.log("working");
+	      $(reference).siblings().remove();
 	      $(reference).replaceWith($('<span>Confirmed!</span>'));
+
+	    }
+	});
+	
+}
+
+
+function declineActivity(id, reference){
+	
+	console.log(reference);
+	id = id.toString();
+	$.ajax({
+	    url: "/search/declineActivity",
+	    data: id,
+	    contentType: "application/json",
+	    type: "POST",
+	    success: function(){
+	      console.log("working");
+	      $(reference).siblings().remove();
+	      $(reference).replaceWith($('<span>Declined</span>'));
 	    }
 	});
 	

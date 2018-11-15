@@ -22,6 +22,20 @@ public class UserService {
 	
 	@Autowired
 	FriendRepository friendRepository;
+	
+	public void declineActivity(String id, Account account) {
+		List<Activity> list = activityRepository.findAll();
+		System.out.println(id);
+		System.out.println(account);
+		for(Activity i : list) {
+			if(i.getActivityId() == Integer.parseInt(id)) {
+				i.setStatus("null");
+				i.setAttendedBy(null);
+				System.out.println(i);
+				activityRepository.save(i);
+			}
+		}
+	}
 
 	public void requestActivity(String id, Account account) {
 		List<Activity> list = activityRepository.findAll();

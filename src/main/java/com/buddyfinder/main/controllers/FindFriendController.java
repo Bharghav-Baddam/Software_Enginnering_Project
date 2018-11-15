@@ -104,6 +104,13 @@ public class FindFriendController {
 		
 	}
 	
+	@RequestMapping(method= {RequestMethod.POST, RequestMethod.GET}, value="/declineActivity",consumes=MediaType.APPLICATION_JSON_VALUE)
+	@ResponseStatus(value = HttpStatus.OK)
+	public void declineActivity(@RequestBody String id,HttpSession session) {
+		
+		userService.declineActivity(id, (Account)session.getAttribute("account"));
+		
+	}
 
 
 }

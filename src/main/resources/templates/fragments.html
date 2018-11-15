@@ -62,6 +62,7 @@
 							<li th:if="${session != null && session.account != null}"><a href="/myactivity">My Activities</a></li>
 							<li th:if="${session.account != null && session.account.role == 'admin'}"><a href="/adminpanel">Admin Panel</a></li>
 							<li th:if="${session.account != null && session.account.role == 'commercial user'}"><a href="/commercialpanel">Commercial Panel</a></li>
+							<li th:if="${session.account != null && session.account.role == 'admin'}"><a href="/notification">Notification</a></li>
 							<li><a href="/contact">Contact</a></li>
 						</ul>
 					</nav>

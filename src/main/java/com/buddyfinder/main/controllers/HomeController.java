@@ -46,9 +46,20 @@ public class HomeController {
 	}
 
 	@RequestMapping(method = RequestMethod.GET, value = "/adminpanel")
-	public String getAdmin(Model model, HttpSession session) {
-		model.addAttribute("Accounts", accountRepository.findAll());
-		return "adminpanel";
+	public ModelAndView getAdmin(ModelAndView modelAndView, HttpSession session) {
+
+		if (authService.isSessionAlive(session.getId())) {
+			modelAndView.addObject("Accounts", accountRepository.findAll());
+			modelAndView.setViewName("adminpanel");
+
+		} else {
+
+			LoginForm loginForm = new LoginForm();
+			modelAndView.addObject("loginForm", loginForm);
+			modelAndView.setViewName("redirect:/login");
+
+		}
+		return modelAndView;
 	}
 	@RequestMapping(method=RequestMethod.GET, value="/commercialpanel")
 	public String filterUsers(Model model, HttpSession session) {
@@ -65,6 +76,22 @@ public class HomeController {
 	public String getAbout(Model model, HttpSession session) {
 		//model.addAttribute("Accounts", accountRepository.findAll());
 		return "about";
+	}
+	@RequestMapping(method = RequestMethod.GET, value = "/notification")
+	public ModelAndView getNotification(ModelAndView modelAndView, HttpSession session) {
+
+		if (authService.isSessionAlive(session.getId())) {
+			modelAndView.addObject("Accounts", accountRepository.findAll());
+			modelAndView.setViewName("notification");
+
+		} else {
+
+			LoginForm loginForm = new LoginForm();
+			modelAndView.addObject("loginForm", loginForm);
+			modelAndView.setViewName("redirect:/login");
+
+		}
+		return modelAndView;
 	}
 
 	@RequestMapping(method = RequestMethod.GET, value = "/myactivity")

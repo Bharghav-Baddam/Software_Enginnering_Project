@@ -8,6 +8,7 @@ public interface AccountRepository extends JpaRepository<Account, Integer>{
 
 	Account findByEmail(String email);
 
+
 //	@Query("selet jpa query where something = :param")
 //	Account findbysaomequery(@ParamSomethingLookMeUp(name = "param" String param);
 }

@@ -20,8 +20,8 @@ public class AuthService {
 
 	private static Map<String, Account> activeSessions = new HashMap<String, Account>();
 	
-	public void createAccount(String email,String password1,String firstName,String lastName) {
-		Account account = new Account(firstName, lastName, password1, email, "", "", "user", null, null);
+	public void createAccount(String role,String email,String password1,String firstName,String lastName) {
+		Account account = new Account(firstName, lastName, password1, email, "", "",role, null, null);
 		accountRepository.save(account);
 	}
 

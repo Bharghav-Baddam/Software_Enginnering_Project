@@ -33,12 +33,12 @@ public class LoginController {
 	
 	
 	@RequestMapping(method=RequestMethod.POST, value="/register")
-	public String registerUser(Model model, @RequestParam String email, 
+	public String registerUser(Model model, @RequestParam String role,@RequestParam String email, 
 			@RequestParam String password1, @RequestParam String firstName, @RequestParam String lastName
 			) {
 		
 		if(authService.isUniqueEmail(email)) {
-			authService.createAccount(email, password1, firstName, lastName);
+			authService.createAccount(role,email, password1, firstName, lastName);
 		}
 
 		return "redirect:/login";

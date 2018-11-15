@@ -119,8 +119,8 @@
 									
 									<span th:case="null">Currently looking for a match</span>
 									<div th:case="pending">
-									<button th:onclick="'javascript:confirmActivity('+${activity.activityId} + ', this)'">Found, please confirm</button>
-									<button th:onclick="'javascript:declineActivity('+${activity.activityId} + ', this)'">Decline</button>
+									<button type="button" class="btn btn-danger" th:onclick="'javascript:confirmActivity('+${activity.activityId} + ', this)'">Found, please confirm</button>
+									<button type="button" class="btn btn-danger" th:onclick="'javascript:declineActivity('+${activity.activityId} + ', this)'">Decline</button>
 									</div>
 									<span th:case="confirmed" th:text="Confirmed">Confirmed</span>
 								</div>

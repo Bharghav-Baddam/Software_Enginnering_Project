@@ -26,8 +26,18 @@ public class Search {
 	private AccountRepository accountRepository;
 
 	public ArrayList<Activity> getActivities(String activityName, String location, Date date){
-		Iterable<Activity> x = activityRepository.findAll();
+		Iterable<Activity> it = activityRepository.findAll();
+		ArrayList<Activity> x = new ArrayList<>();
 		ArrayList<Activity> list = new ArrayList<>();
+		System.out.println(activityName);
+		System.out.println(location);
+		System.out.println(date);
+		for(Activity i : it) {
+			if(i.getAttendedBy() == null) {
+				x.add(i);
+			}
+		}
+
 		//if all fields are empty
 		if(activityName.isEmpty() && location.isEmpty() && date == null) {
 			
@@ -138,20 +148,33 @@ public class Search {
 		return myActivities;
 	}
 
+
+	
 	public ArrayList<Activity> getMyPostedActivities(Account account) {
-		List<Activity> accList =account.getPostedActivities();
+		List<Activity> accList = activityRepository.findAll();
 		ArrayList<Activity> list = new ArrayList<>();
 		for(Activity i : accList) {
-			list.add(i);
+			if(i.getPostedBy().getAccountId() == account.getAccountId()) {
+				list.add(i);
+				System.out.println(i);
+			}
+			
 		}
 		return list;
 	 
 	}
+	
 	public ArrayList<Activity> getMyAttendedActivities(Account account) {
-		List<Activity> accList =account.getAttendedActivities();
+		List<Activity> accList = activityRepository.findAll();
 		ArrayList<Activity> list = new ArrayList<>();
 		for(Activity i : accList) {
-			list.add(i);
+			if(i.getAttendedBy()!= null) {
+				if(i.getAttendedBy().getAccountId() == account.getAccountId()) {
+					list.add(i);
+					System.out.println(i);
+				}
+			}
+			
 		}
 		return list;
 	 

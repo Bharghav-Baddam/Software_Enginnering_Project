@@ -16,6 +16,7 @@ import com.buddyfinder.main.models.Friend;
 import com.buddyfinder.main.repository.AccountRepository;
 import com.buddyfinder.main.repository.FriendRepository;
 import com.buddyfinder.main.services.Search;
+import com.buddyfinder.main.services.UserService;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -36,23 +37,10 @@ public class BuddyFinderApplicationTests {
 		 @Autowired
 		 private FriendRepository friendRepository;
 		 
+		 @Autowired
+		 private UserService userService;
+		 
 		 public void runTest() {
-			 Account account1 = new Account("John", "An", "123456", "jan2@albany.edu", "123", "", "user",
-					 new ArrayList<Activity>(), new ArrayList<Activity>() );
-			 Account account2 = new Account("John", "An", "123456", "jan1@albany.edu", "123", "", "user",
-					 new ArrayList<Activity>(), new ArrayList<Activity>() );
-			 Account account3 = new Account("John", "An", "123456", "jan3@albany.edu", "123", "", "user",
-					 new ArrayList<Activity>(), new ArrayList<Activity>() );
-			 accountRepository.save(account1);
-			 accountRepository.save(account2);
-			 accountRepository.save(account3);
-			 Friend friend = new Friend();
-			 
-			 friend.setFrom(account1);
-			 friend.setTo(account2);
-			 
-			 friendRepository.save(friend);
-			 
 		 }
 
 		 /*

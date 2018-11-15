@@ -47,6 +47,8 @@ public class Activity {
 	@OneToOne
 	private Account attendedBy;
 	
+	@Column
+	private String status;
 	
 	public Activity() {
 		
@@ -63,6 +65,15 @@ public class Activity {
 		this.attendedBy = attendedBy;
 	}
 
+	
+	
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
 
 	public String getActivityName() {
 		return activityName;
@@ -131,6 +142,13 @@ public class Activity {
 
 	public void setAttendedBy(Account attendedBy) {
 		this.attendedBy = attendedBy;
+	}
+
+	@Override
+	public String toString() {
+		return "Activity [activityId=" + activityId + ", location=" + location + ", description=" + description
+				+ ", activityName=" + activityName + ", date=" + date + ", postedBy=" + postedBy + ", attendedBy="
+				+ attendedBy + ", status=" + status + "]";
 	}
 	
 }

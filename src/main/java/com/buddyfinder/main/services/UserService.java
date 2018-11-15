@@ -3,6 +3,7 @@ package com.buddyfinder.main.services;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.TreeSet;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,6 +23,39 @@ public class UserService {
 	@Autowired
 	FriendRepository friendRepository;
 
+	public void requestActivity(String id, Account account) {
+		List<Activity> list = activityRepository.findAll();
+		System.out.println(id);
+		System.out.println(account);
+		for(Activity i : list) {
+			if(i.getActivityId() == Integer.parseInt(id)) {
+				i.setStatus("pending");
+				i.setAttendedBy(account);
+				System.out.println(i);
+				activityRepository.save(i);
+			}
+		}
+	}
+	
+
+	public void confirmActivity(String id, Account account) {
+		
+		List<Activity> list = activityRepository.findAll();
+		System.out.println(id);
+		System.out.println(account);
+		for(Activity i : list) {
+			if(i.getActivityId() == Integer.parseInt(id)) {
+				i.setStatus("confirmed");
+				System.out.println(i);
+				activityRepository.save(i);
+			}
+		}
+	}
+	
+	public void acceptRequest(String id, Account account) {
+		
+	}
+	
 	public void createEvent(String location, String activity, Date sqlDate, Account account) {
 		Activity act = new Activity(location, null, activity, sqlDate, account, null);
 		activityRepository.save(act);
@@ -34,17 +68,21 @@ public class UserService {
 		friendRepository.save(friendObj);
 	}
 	
-	public ArrayList<Account> getAllFriends(Account sessionAcc) {
-		List<Friend> friends = friendRepository.findAll();
-		ArrayList<Account> myFriends = new ArrayList<>();
-		for(Friend x : friends) {
-			if(sessionAcc.getAccountId() == x.getFrom().getAccountId()) {
-				myFriends.add(x.getFrom());
-			}else if(sessionAcc.getAccountId() == x.getTo().getAccountId()) {
-				myFriends.add(x.getTo());
-			}
-		}
+
+	public ArrayList<String> getLocations(){
 		
-		return myFriends;
+		
+		List<Activity> list = activityRepository.findAll();
+		
+		TreeSet<String> set = new TreeSet<>();
+		list.forEach(x -> {
+			set.add(x.getLocation());
+		});
+		
+		ArrayList<String> locations = new ArrayList<>();
+		
+		set.forEach(x-> locations.add(x));
+		return locations;
 	}
+
 }

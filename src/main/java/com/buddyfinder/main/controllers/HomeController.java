@@ -68,6 +68,7 @@ public class HomeController {
 
 		if (authService.isSessionAlive(session.getId())) {
 			modelAndView.addObject("myPostedActivities", search.getMyPostedActivities((Account) session.getAttribute("account")));
+			modelAndView.addObject("myAttendedActivities", search.getMyAttendedActivities((Account) session.getAttribute("account")));
 			modelAndView.setViewName("myactivities");
 
 		} else {

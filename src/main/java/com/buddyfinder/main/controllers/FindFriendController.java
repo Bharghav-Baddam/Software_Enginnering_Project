@@ -16,8 +16,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.buddyfinder.main.forms.LoginForm;
+import com.buddyfinder.main.models.Account;
 import com.buddyfinder.main.services.AuthService;
 import com.buddyfinder.main.services.Search;
+import com.buddyfinder.main.services.UserService;
 
 @Controller
 @RequestMapping("/search")
@@ -28,17 +30,20 @@ public class FindFriendController {
 	
 	@Autowired
 	AuthService authService;
+	
+	@Autowired
+	UserService userService;
 
 	@RequestMapping(method=RequestMethod.GET, value="")
 	public String findFriend(Model model) {
-
+		model.addAttribute("locations", userService.getLocations());
 		return "search";
 	}
 	
-	@RequestMapping(method=RequestMethod.POST, value="/findfriends")
+	@RequestMapping(method= {RequestMethod.POST, RequestMethod.GET}, value="/findfriends")
 	public String findFriend(@RequestParam String location, @RequestParam String activity,
 			@RequestParam String date, Model model) {
-		System.out.println(date);
+		System.out.println(location);
 		if(!date.equals("''")) {
 			try {
 				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
@@ -56,6 +61,23 @@ public class FindFriendController {
 		}
 		model.addAttribute("Friends", search.getActivities(activity, location, null));
 		return "buddies";
+	}
+	
+	
+	@RequestMapping(method=RequestMethod.GET, value="/requestActivity")
+	public void requestActivity(@RequestParam String id, HttpSession session) {
+		
+		userService.requestActivity(id, (Account)session.getAttribute("account"));
+//		
+//		return "redirect/";
+	}
+	
+	@RequestMapping(method=RequestMethod.GET, value="/confirmActivity")
+	public void confirmActivity(@RequestParam String id, HttpSession session) {
+		
+		userService.confirmActivity(id, (Account)session.getAttribute("account"));
+//		
+//		return "redirect/";
 	}
 //	
 //	@RequestMapping(method=RequestMethod.GET, value="/findfriends")

@@ -59,12 +59,8 @@
 											</div>
 										</div>
 										<div class="col-lg-4 col-md-6 col-xs-6">
-											<select name="location" class="app-select form-control">
-												<option data-display="Choose locations" value="">Choose Location</option>
-												<option value="New York">New York</option>
-												<option value="China">China</option>
-												<option value="Bogra">Bogra</option>
-											</select>
+														<input class="form-control" name="location" type="text"
+												placeholder="Location"></input>
 										</div>
 
 										<div class="col-lg-4 col-md-6 col-xs-6">
@@ -89,7 +85,7 @@
 				</div>
 			</section>
 			<!-- End banner Area -->
-
+				<h1>My Posted Activities</h1>
 			<div class="row">
 				<th:block th:each="activity : ${myPostedActivities}">
 					<div class="col-lg-4">
@@ -119,13 +115,12 @@
 										</p>
 									</div>
 								</div>
-								<div class="bottom d-flex justify-content-start">
-									<p>
-										<span class="lnr lnr-heart"></span> 15 Likes
-									</p>
-									<p>
-										<span class="lnr lnr-bubble"></span> 02 Comments
-									</p>
+								<div class="bottom d-flex justify-content-start"  th:switch="${activity.status}">
+									
+									<span th:case="null">Currently looking for a match</span>
+									
+									<a th:case="pending" th:href="@{/search/confirmActivity(id=${activity.activityId})}"><button>Found, please confirm</button></a>
+									<span th:case="confirmed" th:text="Confirmed">Confirmed</span>
 								</div>
 							</div>
 						</div>
@@ -134,8 +129,9 @@
 
 
 			</div>
-			
+			<h1>My Attending Activities</h1>
 			<div class="row">
+			
 				<th:block th:each="activity : ${myAttendedActivities}">
 					<div class="col-lg-4">
 						<div class="single-property">
@@ -164,13 +160,9 @@
 										</p>
 									</div>
 								</div>
-								<div class="bottom d-flex justify-content-start">
-									<p>
-										<span class="lnr lnr-heart"></span> 15 Likes
-									</p>
-									<p>
-										<span class="lnr lnr-bubble"></span> 02 Comments
-									</p>
+								<div class="bottom d-flex justify-content-start" th:switch="${activity.status}">
+									<span th:case="pending">Currently waiting for approval</span>
+									<span th:case="confirmed">Found!</span>
 								</div>
 							</div>
 						</div>

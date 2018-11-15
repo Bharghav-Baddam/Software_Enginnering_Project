@@ -50,7 +50,11 @@ public class HomeController {
 		model.addAttribute("Accounts", accountRepository.findAll());
 		return "adminpanel";
 	}
-	
+	@RequestMapping(method=RequestMethod.GET, value="/commercialpanel")
+	public String filterUsers(Model model, HttpSession session) {
+			return "commercialpanel";
+		
+	}
 	@RequestMapping(method = RequestMethod.GET, value = "/contact")
 	public String getContact(Model model, HttpSession session) {
 		//model.addAttribute("Accounts", accountRepository.findAll());

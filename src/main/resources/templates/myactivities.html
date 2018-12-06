@@ -160,6 +160,9 @@
 										<p>
 											Activity: <span th:text="${activity.activityName}"></span>
 										</p>
+										<p>
+											Contact: <span th:text="${activity.postedBy.email}"></span>
+										</p>
 									</div>
 								</div>
 								<div class="bottom d-flex justify-content-start" th:switch="${activity.status}">

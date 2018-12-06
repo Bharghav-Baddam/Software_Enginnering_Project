@@ -149,7 +149,6 @@ public class UserService {
 		}
 		return wallPosts;
 	}
-
 	public void saveWallPost(WallForm wallForm, Integer postedOnAccId, Account postedBy) {
 		Account postedOn = accountRepository.findById(postedOnAccId).get();
 		
@@ -172,7 +171,15 @@ public class UserService {
 			accountRepository.saveAndFlush(postedOn);
 		}
 	}
-
+	public void deleteWallPost(Integer postId) {
+		List<Wall> posts = wallRepository.findAll();//wallRepository.findAllByWallPostOn(account);
+		for (Wall w:posts) {
+			if(w.getId().equals(postId)) {
+				wallRepository.delete(w);
+			}
+		}
+		
+	}
 	public Account getUser(Integer id) {
 		Account account = accountRepository.findById(id).get();
 		return account;

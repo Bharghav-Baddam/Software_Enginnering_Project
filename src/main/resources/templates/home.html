@@ -338,16 +338,18 @@
 				</div>
 			</div>
 			<div class="row">
-				<div class="active-testimonial-carusel" th:each="img : ${advertisements}">
-					<div class="single-testimonial item">
-						  <img class="mx-auto rounded-circle"  th:src="@{'data:image/jpeg;base64,'+${img}}">
+				<div class="active-testimonial-carusel" >
+					<div class="single-testimonial item" th:each="img : ${advertisements}">
+						 <img style="height:300px;width:300px !important" class="mx-auto rounded-circle"  th:src="@{'data:image/jpeg;base64,'+${img}}">
 					</div>
 					
 				</div>
+					
+				</div>
 			</div>
-		</div>
+	
 	</section>
-	 
+
 	<!-- start footer Area -->
 	<footer th:replace="fragments :: footer">
 

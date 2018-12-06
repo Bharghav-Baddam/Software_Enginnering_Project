@@ -1,6 +1,8 @@
 package com.buddyfinder.main.services;
 
+import java.sql.Date;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -54,6 +56,8 @@ public class AuthService {
 		}
 		else if (account.getPassword().equals(password) ) {
 			authenticatedUser = account;
+			account.setLastLoggedIn(new Date(Calendar.getInstance().getTime().getTime()));
+			accountRepository.save(account);
 			activeSessions.put(sessionId, account);
 		}
 		return authenticatedUser;

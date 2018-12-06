@@ -16,29 +16,17 @@ public class AdminService {
 	AccountRepository accountRepository;
 	
 
-	public boolean blockUser(String id) {
-		Optional<Account> x = accountRepository.findById(Integer.parseInt(id));
+	public boolean blockUser(Integer id) {
+		Optional<Account> x = accountRepository.findById(id);
 		
 		if(x.isPresent()) {
 			Account account = (Account) x.get();
-			account.setBlocked(true);
+			account.setBlocked(!account.isBlocked());
 			accountRepository.save(account);
 			return true;
 		}else {
 			return false;
 		}
 	}
-	
-	public boolean unblockUser(String id) {
-	Optional<Account> x = accountRepository.findById(Integer.parseInt(id));
-		
-		if(x.isPresent()) {
-			Account account = (Account) x.get();
-			account.setBlocked(false);
-			accountRepository.save(account);
-			return true;
-		}else {
-			return false;
-		}
-	}
+
 }

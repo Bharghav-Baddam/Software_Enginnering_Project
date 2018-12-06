@@ -40,26 +40,46 @@
 					</p>
 				</div>
 			</div>
-			<form action="/adminpanel/action" method="POST">
-  			<div class="row">
-  			<div class="col-lg-3 col-md-6 col-xs-6">
-									<select name="user" id="user" class="app-select form-control">
-										<option data-display="Choose a user" value="">choose user</option>
-										<option  th:each="account:${Accounts}" th:text="${account.email}" th:value="${account.accountId}"></option>
-									</select>
-								</div>
-			<div class="col-lg-3 col-md-6 col-xs-6">
-									<select name="action" id="action" class="app-select form-control">
-										<option data-display="Choose an action" value="">choose action</option>
-										<option value="block">Block this user</option>
-										<option value="unblock">Unblock this user</option>
-									</select>
-								</div>					
-  			  <div class="col-lg-3 col-md-6 col-xs-6"> 
-  			  <button class="primary-btn" id="btn_submt" >Confirm<span class="lnr lnr-arrow-right"></span></button>
-  			  </div>
-  			  </div>		
-  			  </form>
+			<!--  <form action="/adminpanel/action" method="POST">
+	  			<div class="row">
+		  			<div class="col-lg-3 col-md-6 col-xs-6">
+											<select name="user" id="user" class="app-select form-control">
+												<option data-display="Choose a user" value="">choose user</option>
+												<option  th:each="account:${Accounts}" th:text="${account.email}" th:value="${account.accountId}"></option>
+											</select>
+										</div>
+					<div class="col-lg-3 col-md-6 col-xs-6">
+											<select name="action" id="action" class="app-select form-control">
+												<option data-display="Choose an action" value="">choose action</option>
+												<option value="block">Block this user</option>
+												<option value="unblock">Unblock this user</option>
+											</select>
+										</div>					
+		  			  <div class="col-lg-3 col-md-6 col-xs-6"> 
+		  			  <button class="primary-btn" id="btn_submt" >Confirm<span class="lnr lnr-arrow-right"></span></button>
+		  			  </div>
+	  			  </div>		
+  			  </form>-->
+  			 
+  			<table class="table table-striped">
+			  <thead>
+			    <tr>
+			      <th scope="col">Name</th>
+			      <th scope="col">Email</th>
+			      <th scope="col">Block/Unblock</th>
+			      <th scope="col">Last logged in</th>
+			    </tr>
+			  </thead>
+			  <tbody>
+			    <tr th:block th:each="Account : ${Accounts}">
+			      <td th:text="${Account.firstName}"></td>
+			      <td th:text="${Account.email}"></td>
+			      <td ><a th:if="${Account.blocked == false}" th:href="@{'/adminpanel/users/' + ${Account.accountId} + '/block'}"> Block</a>
+			      		<a th:if="${Account.blocked == true}" th:href="@{'/adminpanel/users/' + ${Account.accountId} + '/block'}"> Unblock</a> </td>
+			      <td th:text="${Account.lastLoggedIn}"></td>
+			    </tr>
+			  </tbody>
+			</table>
   			   
 			<div class="row">
   			<div class="col-lg-4 col-md-6 col-xs-6">

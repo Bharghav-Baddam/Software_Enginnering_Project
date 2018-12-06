@@ -5,6 +5,7 @@ import com.buddyfinder.main.services.NotificationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -22,16 +23,9 @@ public class AdminController {
 	@Autowired
 	private NotificationService notificationService;
 
-	@RequestMapping(method=RequestMethod.POST, value="/action")
-	public String handleUser(Model model, @RequestParam String user, @RequestParam String action) {
-		System.out.println(user);
-		System.out.println(action);
-		if(action.equals("block")) {
-			Boolean x = adminService.blockUser(user);
-		}else {
-			Boolean x = adminService.unblockUser(user);
-		}
-
+	@RequestMapping(method=RequestMethod.GET, value="/users/{id}/block")
+	public String handleUser(Model model, @PathVariable Integer id) {
+		Boolean x = adminService.blockUser(id);
 		return "redirect:/adminpanel";
 	}
 

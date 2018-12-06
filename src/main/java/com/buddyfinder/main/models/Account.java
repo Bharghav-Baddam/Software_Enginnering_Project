@@ -1,5 +1,6 @@
 package com.buddyfinder.main.models;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -43,7 +44,16 @@ public class Account {
 	private String role;
 	@Column
 	private boolean blocked;
+	@Column
+	private Date lastLoggedIn;
+	
+	public Date getLastLoggedIn() {
+		return lastLoggedIn;
+	}
 
+	public void setLastLoggedIn(Date lastLoggedIn) {
+		this.lastLoggedIn = lastLoggedIn;
+	}
 
 	//mappedBy is the name of the field of the linked Activity
 	//@LazyCollection(LazyCollectionOption.FALSE)

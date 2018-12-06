@@ -17,6 +17,7 @@ import com.buddyfinder.main.forms.LoginForm;
 import com.buddyfinder.main.models.Account;
 import com.buddyfinder.main.repository.AccountRepository;
 import com.buddyfinder.main.services.AuthService;
+import com.buddyfinder.main.services.CommercialService;
 import com.buddyfinder.main.services.Search;
 import com.buddyfinder.main.services.UserService;
 
@@ -34,13 +35,17 @@ public class HomeController {
 
 	@Autowired
 	UserService userService;
+	
+	@Autowired
+	CommercialService commercialService;
 
 	@RequestMapping(method = RequestMethod.GET, value = {"/", "/home"})
 	public ModelAndView getHome(ModelAndView modelAndView, HttpSession session) {
-
+		modelAndView.addObject("advertisements", commercialService.getImages());
 		modelAndView.setViewName("home");
 		if (authService.isSessionAlive(session.getId())) {
 			session.setAttribute("account", authService.getSession(session.getId()));
+			
 		}
 		return modelAndView;
 	}

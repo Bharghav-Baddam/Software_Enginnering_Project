@@ -68,6 +68,7 @@
 			      <th scope="col">Email</th>
 			      <th scope="col">Block/Unblock</th>
 			      <th scope="col">Last logged in</th>
+			      <th scope="col">Check Postings</th>
 			    </tr>
 			  </thead>
 			  <tbody>
@@ -77,6 +78,7 @@
 			      <td ><a th:if="${Account.blocked == false}" th:href="@{'/adminpanel/users/' + ${Account.accountId} + '/block'}"> Block</a>
 			      		<a th:if="${Account.blocked == true}" th:href="@{'/adminpanel/users/' + ${Account.accountId} + '/block'}"> Unblock</a> </td>
 			      <td th:text="${Account.lastLoggedIn}"></td>
+			       <td ><a th:href="@{'/adminpanel/users/' + ${Account.accountId} + '/checkPostings'}"> check postings</a>
 			    </tr>
 			  </tbody>
 			</table>
